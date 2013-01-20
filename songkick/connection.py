@@ -12,9 +12,9 @@ class SongkickConnection(object):
 
     ApiBase = 'http://api.songkick.com/api/3.0/'
     
-    def __init__(self, api_key):
+    def __init__(self, api_key, cache_directory=''):
         self.api_key = api_key
-        self._http = httplib2.Http('.songkick_cache')
+        self._http = httplib2.Http(cache_directory + '.songkick_cache')
 
     def make_request(self, url, method='GET', body=None, headers=None):
         """Make an HTTP request.
